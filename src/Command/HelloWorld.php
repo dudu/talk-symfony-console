@@ -4,6 +4,7 @@ namespace Talk\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 
 class HelloWorld extends Command
 {
@@ -20,13 +21,26 @@ class HelloWorld extends Command
                 'name',
                 InputArgument::REQUIRED,
                 'The name of the person.'
+            )
+            ->addOption(
+                'year',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'What year is it?',
+                2016
             );
+
     }
 
     protected function initialize(InputInterface $input)
     {
-        $this->year = 2016;
+        $this->year       = $input->getOption('year');
         $this->personName = $input->getArgument('name');
+    }
+
+    protected function interact()
+    {
+        echo "interact() called \n";
     }
 
     protected function execute()
