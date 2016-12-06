@@ -5,7 +5,9 @@ use Symfony\Component\Console\Command\Command;
 
 class HelloWorld extends Command
 {
-    public function configure()
+    protected $year;
+
+    protected function configure()
     {
         $this->setName('hello')
             ->setDescription('Says Hello!')
@@ -13,8 +15,18 @@ class HelloWorld extends Command
             ->setHidden(false);
     }
 
+    protected function initialize()
+    {
+        $this->year = 2016;
+    }
+
+    protected function interact()
+    {
+        echo "interact() called \n";
+    }
+
     protected function execute()
     {
-        echo "Hello PHP Conference!\n";
+        echo sprintf("Hello PHP Conference %d! \n", $this->year);
     }
 }
