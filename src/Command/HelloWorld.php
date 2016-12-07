@@ -45,20 +45,11 @@ class HelloWorld extends Command
 
     protected function interact()
     {
-        echo "interact() called \n";
+        $this->logger->debug(__METHOD__);
     }
 
     protected function execute(InputInterface $input)
     {
-        $this->logger->emergency('emergency');
-        $this->logger->alert('alert');
-        $this->logger->critical('critical');
-        $this->logger->error('error');
-        $this->logger->warning('warning');
-        $this->logger->notice('notice');
-        $this->logger->info('info');
-        $this->logger->debug('debug');
-
         echo sprintf(
             "Hello %s, welcome to PHP Conference %d! \n",
             $this->personName,
