@@ -7,12 +7,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Logger\ConsoleLogger;
+use Symfony\Component\Console\Helper\ProgressBar;
 
 class HelloWorld extends Command
 {
     protected $year;
     protected $personName;
     protected $logger;
+    protected $progress;
 
     protected function configure()
     {
@@ -38,6 +40,8 @@ class HelloWorld extends Command
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
         $this->logger = new ConsoleLogger($output);
+        $this->progress = new ProgressBar($output, 100);
+        $this->progress->start();
 
         $this->year       = $input->getOption('year');
         $this->personName = $input->getArgument('name');
@@ -50,10 +54,18 @@ class HelloWorld extends Command
 
     protected function execute(InputInterface $input)
     {
+        for ($i=0; $i < 100; $i++) {
+            usleep(rand(10000,100000));
+            $this->progress->advance();
+        }
+
+        $this->progress->finish();
+
         echo sprintf(
-            "Hello %s, welcome to PHP Conference %d! \n",
+            "\nHello %s, welcome to PHP Conference %d! \n",
             $this->personName,
             $this->year
         );
+
     }
 }
