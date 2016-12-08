@@ -63,7 +63,7 @@ class HelloWorld extends Command
         }
     }
 
-    protected function execute(InputInterface $input)
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $startTime = microtime(true);
 
@@ -76,10 +76,12 @@ class HelloWorld extends Command
         $this->progress->finish();
 
 
-        echo sprintf(
-            "\nHello %s, welcome to PHP Conference %d! \n",
-            $this->personName,
-            $this->year
+        $output->writeLn(
+            sprintf(
+                "Hello %s, welcome to PHP Conference %d!",
+                $this->personName,
+                $this->year
+            )
         );
 
         $endTime = microtime(true);
