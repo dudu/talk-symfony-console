@@ -1,8 +1,14 @@
 {
     "require": {
-        "symfony/console": "^3.2"
+        "symfony/console": "^3.2",
+        "phpunit/phpunit": "^5.7"
     },
     "autoload": {
         "psr-4": {"Talk\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Talk\\Tests\\": "tests"
+        }
     }
 }
