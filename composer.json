@@ -4,11 +4,11 @@
         "phpunit/phpunit": "^5.7"
     },
     "autoload": {
-        "psr-4": {"Talk\\": "src/"}
+        "psr-4": {"xduh\\": "src/"}
     },
     "autoload-dev": {
         "psr-4": {
-            "Talk\\Tests\\": "tests"
+            "xduh\\Tests\\": "tests"
         }
     }
 }
