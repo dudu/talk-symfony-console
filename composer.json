@@ -1,4 +1,16 @@
 {
+    "name": "xduh/talk-symfony-console",
+    "type": "library",
+    "description": "Some example",
+    "keywords": ["talk","example"],
+    "homepage": "https://github.com/xduh/talk-symfony-console",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo Nascimento",
+            "email": "github@eduardonascimento.com.br"
+        }
+    ],
     "require": {
         "symfony/console": "^3.2",
         "phpunit/phpunit": "^5.7"
